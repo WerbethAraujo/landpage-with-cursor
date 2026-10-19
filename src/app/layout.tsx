@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "../components/themes-provider";
 
 import "./globals.css";
 
@@ -19,21 +20,23 @@ export const metadata: Metadata = {
     "Landing page moderna em Next.js, Tailwind CSS e shadcn/ui para apresentar seu produto.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html
-      lang="pt-BR"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(() => { try { const dark = window.matchMedia("(prefers-color-scheme: dark)").matches; document.documentElement.classList.toggle("dark", dark); } catch {} })();`,
-          }}
-        />
-      </head>
-      <body className="flex min-h-full flex-col">{children}</body>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head />
+      <body  className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
-  );
-}
+  )}

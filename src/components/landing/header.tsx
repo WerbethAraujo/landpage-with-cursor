@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, Sparkles, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import {ModeToggle} from "../mode-toggle"
 
 type NavItem = {
   href: string;
@@ -41,7 +42,8 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="flex items-center gap-4">
+          <ModeToggle/>
           <Button nativeButton={false} render={<a href="#contato" />}>
             Começar agora
           </Button>
