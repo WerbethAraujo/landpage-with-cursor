@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "../components/themes-provider";
+import {WhatsappButton} from "../components/whatsapp-button"
 
 import "./globals.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <WhatsappButton />
         </ThemeProvider>
       </body>
     </html>
